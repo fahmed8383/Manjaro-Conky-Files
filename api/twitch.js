@@ -7,6 +7,16 @@ const streamers = ["--"];
 
 // main function
 async function main() {
+
+    // if we cannot access the internet then this file will print errors into conky.
+    // thus exit if cannot access internet.
+    await require('dns').resolve('www.google.com', function(err) {
+        if (err) {
+            console.log("No Internet Access")
+            process.exit()
+        }
+    });
+
     token = await getTwitchAccessToken();
     await getStreams(token);
     return

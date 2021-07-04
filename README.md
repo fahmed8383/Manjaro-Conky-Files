@@ -20,12 +20,13 @@ client_id and secret for it. Once you have this information follow the correspon
 3. ```npm install```
 4. Create a secrets.json file and add the following information:
 
-```
+```bash
 {
     "twitch_client_id": "you_client_id",
     "twitch_client_secret": "your_secret"
 }
-````
+```
+
 5. Open up twitch.js and add the streamers that you want displayed in the "streamers" array near the top of the file.
 
 Once you start up conky.sh, the streamers should be displayed on your desktop environments if they are live.
@@ -34,3 +35,15 @@ Once you start up conky.sh, the streamers should be displayed on your desktop en
 increase this limit yourself in twitch.js and twitch.conf**
 
 **This configuration updates the status of all streamer once every minute, you can increase or decrease this time in twitch.conf file**
+
+## Stocks Display
+
+The stocks display uses Nodejs to webscrape data off of yahoo finance before being integrated to stocks.conf. To setup this display
+follow the corresponding steps:
+
+1. Install Node.js and npm
+2. ```cd api/```
+3. ```npm install```
+5. Open up stocks.js and add the stocks that you want displayed in the "stocks" array near the top of the file.
+
+Once you start up conky.sh, the stocks should be displayed on your desktop environments if they are live.
