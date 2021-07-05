@@ -3,7 +3,7 @@ const axios = require("axios");
 const cheerio = require('cheerio');
 
 // list of stocks we want to get info about
-const stocks = ['UWMC', 'AC.TO', 'MMNFF']
+const stocks = ['UWMC', 'AC.TO', 'NNDM', 'MMNFF']
 
 // main function
 async function main() {
@@ -36,12 +36,12 @@ async function parseHTMLData(html, stock){
     const $ = cheerio.load(html);
 
     // get price from html data
-    const priceDiv = $('div[data-reactid=31] > span[data-reactid=32]');
-    price = $(priceDiv.get(0)).text()
+    const priceDiv = $('div.D\\(ib\\).Mend\\(20px\\) > span.Fw\\(b\\)');
+    price = $(priceDiv.get(0)).text();
 
     // get change from html data (remove the change in price and only keep percent change)
-    const changeDiv = $('div[data-reactid=31] > span[data-reactid=33]');
-    change = $(changeDiv.get(0)).text()
+    const changeDiv = $('div.D\\(ib\\).Mend\\(20px\\)> span.Fw\\(500\\)');
+    change = $(changeDiv.get(0)).text();
     change = change.substring(change.indexOf("("));
 
     // display the stock data
